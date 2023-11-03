@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+        {% csrf_token %}
+        <table width="100%" border="2px">
+            <tr>
+                <th>category name</th>
+                <th>product name</th>
+                <th>product Description</th>
+                <th>price</th>
+                <th>product image</th>
+                <th>options</th>
+            </tr>
+            {% for d in cat %}
+            <tr>
+                <td>{{d.catname}}</td>
+                <td>{{d.productname}}</td>
+                <td>{{d.description}}</td>
+                <td>{{d.price}}</td>
+                <td>
+                    <img src="{{d.productimage.url}}" width="80px" height="80px">
+                </td>
+
+                <td>
+                    <div>
+                     <form action=" {% url 'edit_product' productid=d.id %}">
+                        <button type="submit" class="btn btn-success">Edit</button>
+                     </form>
+                    </div>
+              </td>
+                <td>
+                     <form>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                     </form>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+</div>
+
+</body>
+</html>
+{% endblock %}

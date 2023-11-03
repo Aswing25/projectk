@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2 style="text-align:center">add new products here...! </h2>
+<div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4"></h6>
+                            <form method="post" action="{% url 'productsave' %}" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <div class="mb-3">
+
+
+
+                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" NAME="cname">
+                                        {% for i in data %}
+                                <option> {{i.name}}</option>
+                                        {% endfor %}
+
+                            </select>
+
+
+
+                                </div>
+
+                                <label for="exampleInputEmail1" class="form-label">Enter Product Name</label>
+                                    <input type="text" class="form-control"   name="pname"><br><br>
+                                <label for="exampleInputEmail1" class="form-label">Enter Description</label>
+                                <textarea class="form-control" placeholder="Product Description" id="floatingTextarea" style="height: 150px;" name="pdescription"> </textarea><br><br>
+
+                            <div class="mb-3"><div>
+                                    <label for="exampleInputEmail1" class="form-label">enter price</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pprice"><br><br>
+
+                                    </div>
+                                <div>product image
+                                    <input type="file" name="pimage">
+                                </div><br><br>
+
+                                <button type="submit" class="btn btn-primary"> submitt</button>
+                            </div>
+                            </form>
+ </body>
+</html>
+{% endblock %}

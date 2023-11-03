@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+        {% csrf_token %}
+        <table width="100%" border="2px">
+            <tr>
+                <th>Category name</th>
+                <th>Category Description</th>
+                <th>Category image</th>
+                <th>price</th>
+
+            </tr>
+            {% for d in data %}
+            <tr>
+                <td>{{d.name}}</td>
+                <td>{{d.Cdes}}</td>
+                <td>
+                    <img src="{{d.categoryimg.url}}" width="80px" height="80px">
+                </td>
+                <td>{{d.cprice}}</td>
+                <td>
+                     <form action="{% url 'edit_category' dataid=d.id %}">
+                        <button type="submit" class="btn btn-success">Edit</button>
+                     </form>
+                </td>
+                <td>
+                     <form action="{% url 'delete_category' dataid=d.id %}">
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                     </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+</div>
+
+</body>
+</html>
+{% endblock %}

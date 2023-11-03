@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3 style="text-align:center">edit category here....</h3>
+<form method="post" action="{% url 'update_categorydata' dataid=category.id %}">
+    {% csrf_token %}
+    <div class="bg-secondary rounded h-100 p-4">
+    <div class="mb-3">
+                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" NAME="cname">
+
+                                <option selected=""> {{category}}</option>
+                                <option >laptop</option>
+                                <option >mobile</option>
+                                <option >television</option>
+                            </select>
+
+
+
+
+                                </div>
+                                description
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;" name="cdescription" >{{category.Cdes}} </textarea><br><br>
+
+                            <div class="mb-3"><div>
+                                    <label for="exampleInputEmail1" class="form-label">enter price</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="cprice" value="{{category.cprice}}"><br><br>
+                                    </div>
+                                <div>category image
+                                    <img src="{{category.categoryimg.url}}">
+                                    <input type="file" name="cimage" value="">
+                                </div>
+                            </div>
+                                        <button type="submit" class="btn btn-primary"> submitt</button>
+
+</form>
+</body>
+</html>
+{% endblock %}

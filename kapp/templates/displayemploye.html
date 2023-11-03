@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align:center">
+    <h2>display</h2>
+
+    <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">employe Table</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>age</th>
+                                            <th>mobile</th>
+                                            <th>email</th>
+                                            <th>address</th>
+                                            <th>company</th>
+                                            <th>salary</th>
+                                            <th>options</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            {% for i in data %}
+
+                                        <tr>
+                                            <td>{{i.ename}}</td>
+                                            <td>{{i.eage}}</td>
+                                            <td>{{i.mobile}}</td>
+                                            <td>{{i.email}}</td>
+                                            <td>{{i.address}}</td>
+                                            <td>{{i.company}}</td>
+                                            <td>{{i.salary}}</td>
+                                            <td>
+
+                                                <form>
+                                                     <button type="submit" class="btn btn-primary">edit</button>
+                                                </form>
+                                            </td>
+
+                                             <td>
+
+                                                <form>
+                                                     <button type="submit" class="btn btn-primary">delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                            {% endfor %}
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+</div>
+
+</body>
+</html>
+{% endblock %}
